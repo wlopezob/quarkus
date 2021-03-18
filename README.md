@@ -41,8 +41,8 @@ quarkus:
         deployment-target: kubernetes
         env:
             vars:
-                quarkus-launch-devmode: true
-                java-enable-debug: true
+                quarkus-launch-devmode: true #variable de entorno para habilitar la conexion con remote-dev 
+                java-enable-debug: true #variable degugger 
                 #custom.message: k8s-local-variable
             configmaps: config-ms-servicios-juntos
         service-type: node-port #el servicio de tipo NodePort para poder conectarnos con remote-dev 
@@ -54,4 +54,16 @@ mconfiguracion:
     mensaje: ${MCONFIGURATION.MENSAJE:"hola"}
 mconfiguracion:
     mensaje02: mensaje02
+```
+
+######  Creamos el ConfigMap (opcional, probamos quarkus con configmap)
+```
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-ms-servicios-juntos
+  labels:
+    tier: dev
+data:
+  mconfiguracion.mensaje: k8s-config
 ```
