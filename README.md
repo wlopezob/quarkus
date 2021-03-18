@@ -16,3 +16,4 @@
     <artifactId>quarkus-config-yaml</artifactId>
 </dependency>
 ```
+Moficicar la extension del archivo application.properties a application.yaml
