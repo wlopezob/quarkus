@@ -1,5 +1,6 @@
 # Debug con quarkus y k8s 
 ## Instalar las dependecias
+```
 <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-kubernetes</artifactId>
@@ -12,3 +13,4 @@
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-config-yaml</artifactId>
     </dependency>
+```
