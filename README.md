@@ -1,6 +1,6 @@
 # Debug con quarkus y k8s
 
-## Instalar las dependecias
+### Instalar las dependecias
 
 ```
 <dependency>
@@ -18,7 +18,7 @@
 ```
 Moficicar la extension del archivo application.properties a application.yaml
 
-## Pegar el siguiente contenido
+### Pegar el siguiente contenido
 ```
 quarkus:
     package:
