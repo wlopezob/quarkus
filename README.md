@@ -72,14 +72,14 @@ data:
 mvn clean install -DskipTests -Dquarkus.kubernetes.deploy=true
 ```
 ## Profile dev activated. Live Coding activated
-###### Podemos verificar los POD creados, revisar el log donde se pueda verificar que el profile dev este activado
+###### Podemos listar el POD creado, tambien revisar el log donde se pueda verificar que el **Profile dev activated. Live Coding activated** este activado
 ```
 kubectl get po
 kubectl logs ms-servicios-juntos-6d5b5fb857-2h445
 
 2021-03-18 20:53:21,315 WARN  [io.qua.kub.dep.KubernetesProcessor] (build-14) No project was detected, skipping generation of kubernetes manifests!
 2021-03-18 20:53:21,953 INFO  [io.quarkus] (Quarkus Main Thread) ms-servicios-juntos 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.12.2.Final) started in 0.962s. Listening on: http://0.0.0.0:8080
-2021-03-18 20:53:21,953 INFO  [io.quarkus] (Quarkus Main Thread) **Profile dev activated. Live Coding activated.**
+2021-03-18 20:53:21,953 INFO  [io.quarkus] (Quarkus Main Thread) Profile dev activated. Live Coding activated.
 2021-03-18 20:53:21,954 INFO  [io.quarkus] (Quarkus Main Thread) Installed features: [cdi, config-yaml, kubernetes, resteasy]
 2021-03-18 20:53:21,954 INFO  [io.qua.dep.dev.RuntimeUpdatesProcessor] (vert.x-worker-thread-0) Hot replace total time: 2.590s
 ```
