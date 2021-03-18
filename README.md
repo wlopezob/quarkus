@@ -26,9 +26,9 @@ quarkus:
     live-reload:
         password: abc123 #password para la conexion remote-dev
     container-image:
-        build: true 
-        push: true
-        group: wlopezob
+        build: true # contruye la imagen
+        push: true # push de la imagen a dockerhub
+        group: wlopezob #nombre del usuario de dockerhub, nuestras imagenes tendran el prefijo wlopezob/miimagen
     kubernetes:
         namespace: default
         replicas: 1
@@ -56,7 +56,7 @@ mconfiguracion:
     mensaje02: mensaje02
 ```
 
-######  Creamos el ConfigMap (opcional, probamos quarkus con configmap)
+######  Creamos el ConfigMap (opcional, pruebas de quarkus con configmap)
 ```
 apiVersion: v1
 kind: ConfigMap
@@ -66,4 +66,8 @@ metadata:
     tier: dev
 data:
   mconfiguracion.mensaje: k8s-config
+```
+###### Compilamos y creamos nuestro POD y Service en kubernetes
+```
+mvn clean install -DskipTests -Dquarkus.kubernetes.deploy=true
 ```
