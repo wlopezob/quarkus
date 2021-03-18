@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-ms-servicios-juntos
+  labels:
+    tier: dev
+data:
+  mconfiguracion.mensaje: k8s-config
