@@ -83,3 +83,34 @@ kubectl logs ms-servicios-juntos-6d5b5fb857-2h445
 2021-03-18 20:53:21,954 INFO  [io.quarkus] (Quarkus Main Thread) Installed features: [cdi, config-yaml, kubernetes, resteasy]
 2021-03-18 20:53:21,954 INFO  [io.qua.dep.dev.RuntimeUpdatesProcessor] (vert.x-worker-thread-0) Hot replace total time: 2.590s
 ```
+###### Revisamos el puerto del servicio
+kubectl get svc
+```
+NAME                      TYPE           CLUSTER-IP       EXTERNAL-IP              PORT(S)                                                     AGE      
+kubernetes                ClusterIP      10.96.0.1        <none>                   443/TCP                                                     31d       
+ms-servicios-juntos       NodePort       10.104.99.59     <none>                   8080:31574/TCP,8443:32623/TCP,5005:30379/TCP                8h       
+```
+###### Establecemos la conexion quarkus:remote-dev
+```
+mvn quarkus:remote-dev -Ddebug=false -Dquarkus.package.type=mutable-jar -Dquarkus.live-reload.url=http://localhost:31574 -Dquarkus.live-reload.password=abc123
+```
+
+###### attach la conexion remota al hostname: localhost con el puerto NodePort 30379 
+```
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "type": "java",
+            "name": "Attach to Remote Program",
+            "request": "attach",
+            "hostName": "localhost",
+            "port": 30379
+        },
+    ]
+}
+```
