@@ -95,8 +95,9 @@ ms-servicios-juntos       NodePort       10.104.99.59     <none>                
 mvn quarkus:remote-dev -Ddebug=false -Dquarkus.package.type=mutable-jar -Dquarkus.live-reload.url=http://localhost:31574 -Dquarkus.live-reload.password=abc123
 ```
 
-###### attach la conexion remota al hostname: localhost con el puerto NodePort 30379 
+###### attach la conexion y task remota al hostname: localhost con el puerto NodePort 30379 
 ```
+launch.json
 {
     // Use IntelliSense to learn about possible attributes.
     // Hover to view descriptions of existing attributes.
@@ -111,6 +112,61 @@ mvn quarkus:remote-dev -Ddebug=false -Dquarkus.package.type=mutable-jar -Dquarku
             "hostName": "localhost",
             "port": 30379
         },
+        {
+            "preLaunchTask": "quarkus:remote-dev",
+            "type": "java",
+            "request": "attach",
+            "hostName": "localhost",
+            "name": "Remote Debug Quarkus application",
+            "port": 30379
+        }
+    ]
+}
+
+tasks.json
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "verify",
+            "type": "shell",
+            "command": "mvn -B verify",
+            "group": "build"
+        },
+        {
+            "label": "test",
+            "type": "shell",
+            "command": "mvn -B test",
+            "group": "test"
+        },
+        {
+			"label": "quarkus:remote-dev",
+			"type": "shell",
+			"command": "./mvnw quarkus:remote-dev -Ddebug=false -Dquarkus.package.type=mutable-jar -Dquarkus.live-reload.url=http://localhost:31574  -Dquarkus.live-reload.password=abc123",
+			"windows": {
+				"command": ".\\mvnw.cmd quarkus:remote-dev -Ddebug=false -Dquarkus.package.type=mutable-jar -Dquarkus.live-reload.url=http://localhost:31574  -Dquarkus.live-reload.password=abc123"
+			},
+			"isBackground": true,
+			"problemMatcher": [
+				{
+					"pattern": [
+						{
+							"regexp": "\\b\\B",
+							"file": 1,
+							"location": 2,
+							"message": 3
+						}
+					],
+					"background": {
+						"activeOnStart": true,
+						"beginsPattern": "^.*Scanning for projects...*",
+						"endsPattern": "^.*Quarkus augmentation completed in *"
+					}
+				}
+			]
+		}
     ]
 }
 ```

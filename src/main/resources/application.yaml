@@ -10,7 +10,7 @@ quarkus:
     kubernetes:
         namespace: default
         replicas: 1
-        #node-port: 30001
+        node-port: #30005
         ports:
             https:
                 container-port: 8443

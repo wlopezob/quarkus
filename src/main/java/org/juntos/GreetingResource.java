@@ -33,7 +33,7 @@ public class GreetingResource {
     @Produces(MediaType.TEXT_PLAIN)
     @Path("hola02/{name}")
     public String hola02(@PathParam("name") String name) {
-        int a = 5 + 3;
-        return "Hello remote k8s debug yeah "+name+", mi mensaje: "+ mensaje02+" "+String.valueOf(a);
+        int a = 5 + 15;
+        return "Hello 02 "+name+", mi mensaje: "+ mensaje02+" "+String.valueOf(a);
     }
 }
