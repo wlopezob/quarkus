@@ -130,18 +130,6 @@ tasks.json
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "verify",
-            "type": "shell",
-            "command": "mvn -B verify",
-            "group": "build"
-        },
-        {
-            "label": "test",
-            "type": "shell",
-            "command": "mvn -B test",
-            "group": "test"
-        },
-        {
 			"label": "quarkus:remote-dev",
 			"type": "shell",
 			"command": "./mvnw quarkus:remote-dev -Ddebug=false -Dquarkus.package.type=mutable-jar -Dquarkus.live-reload.url=http://localhost:31574  -Dquarkus.live-reload.password=abc123",
@@ -170,3 +158,5 @@ tasks.json
     ]
 }
 ```
+###### Para Dquarkus.live-reload.url se podria crear un proxy-reverse como trafik para que siempre sea el mismo URL, no encontre un node-port para el servicio del debug es
+###### por ello que tendremos obtenerlo del NodePort del servicio hasta encontrar una solucion 
