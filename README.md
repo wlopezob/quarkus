@@ -158,4 +158,4 @@ tasks.json
     ]
 }
 ```
-###### Para Dquarkus.live-reload.url se podria crear un proxy-reverse como Traefik para que siempre sea la misma URL, no encontre la configuracion del node-port para el puerto del debug en la configuracion de Service del application.yaml mediante el uso de quarkus-kubernetes, es por ello que tendremos obtenerlo del NodePort del servicio en k8s hasta encontrar una solucion 
+###### Para Dquarkus.live-reload.url se podria crear un proxy-reverse como Traefik para que siempre sea la misma URL, no encontre la configuracion del node-port para el puerto del debug en la configuracion de Service del application.yaml mediante el uso de quarkus-kubernetes, es por ello que tendremos obtenerlo manualemente del NodePort del servicio en k8s hasta encontrar una solucion 
